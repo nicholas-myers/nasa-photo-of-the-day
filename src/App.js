@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 import "./App.css";
 
 function App() {
@@ -24,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <header><h1>NASA PHOTO OF THE DAY</h1></header>
+      <Header />
       <section>
         <div className="NASAcard">
           {nasaDailyData && <h2>{nasaDailyData.title}</h2>}
@@ -33,7 +35,7 @@ function App() {
           
         </div>
       </section>
-      <foooter>{nasaDailyData && <p>{nasaDailyData.copyright} {nasaDailyData.date}</p>}</foooter>
+      {nasaDailyData && <Footer copyright={nasaDailyData.copyright} date={nasaDailyData.date}/>}
     </div>
   );
 }
