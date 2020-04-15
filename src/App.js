@@ -14,6 +14,22 @@ function App() {
   const [nasaDailyData, setNasaDailyData] = useState(null);
   const [picDate, setPicDate] = useState(todaysDate)
   
+  const clickHandler = () => {
+    function randomDate(minYear, maxYear, minMonth, maxMonth, minDay, maxDay) {
+      const calendarYear = Math.floor(
+        Math.random() * (maxYear - minYear) + minYear
+      );
+      const calendarMonth = Math.floor(
+        Math.random() * (maxMonth - minMonth) + minMonth
+      );
+      const calendarDay = Math.floor(Math.random() * (maxDay - minDay) + minDay);
+      const calendarDate = `${calendarYear}-${calendarMonth}-${calendarDay}`;
+    
+      return calendarDate;
+    }
+    setPicDate(randomDate(1995, 2020, 6, 4, 16, 14))
+  }
+
   useEffect(() => {
     axios
       .get(
@@ -21,11 +37,12 @@ function App() {
       )
       .then((res) => {
         setNasaDailyData(res.data);
+        console.log("you clicked")
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [picDate]);
 
   // console.log(nasaDailyData)
   // https://apod.nasa.gov/apod/image/2004/MVP_Aspinall_960.jpg
@@ -35,8 +52,8 @@ function App() {
     <div className="App">
       <header>
         <h1>NASA PHOTO OF THE DAY</h1>
-        <button className="randomize">
-          Random Date
+        <button onClick={clickHandler} className="randomize">
+          Random Pic
         </button>
       </header>
       {nasaDailyData && (
