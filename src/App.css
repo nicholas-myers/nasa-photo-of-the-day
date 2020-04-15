@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -35,4 +39,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.NASAcard {
+  border: 1px solid black;
+  width: 50%;
 }
