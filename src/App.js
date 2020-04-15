@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header"
+import ContentSection from "./components/ContentSection"
 import Footer from "./components/Footer"
 import "./App.css";
 
@@ -27,14 +28,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <section>
-        <div className="NASAcard">
-          {nasaDailyData && <h2>{nasaDailyData.title}</h2>}
-          {nasaDailyData && <img src={nasaDailyData.url} />}
-          {nasaDailyData && <p>{nasaDailyData.explanation}</p>}
-          
-        </div>
-      </section>
+      {nasaDailyData && <ContentSection title={nasaDailyData.title} url={nasaDailyData.url} explanation={nasaDailyData.explanation}/>}
       {nasaDailyData && <Footer copyright={nasaDailyData.copyright} date={nasaDailyData.date}/>}
     </div>
   );
