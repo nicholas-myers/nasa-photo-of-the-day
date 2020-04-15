@@ -1,7 +1,8 @@
 import React from "react";
 import "../../src/App.css";
 
-function ContentSection({ title, url, explanation }) {
+function ContentSection(props) {
+   const { title, url, explanation } = props
   return (
     <section className="content">
         <div className="NASAcard">

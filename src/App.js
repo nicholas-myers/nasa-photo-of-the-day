@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "./components/Header"
-import ContentSection from "./components/ContentSection"
-import Footer from "./components/Footer"
+import Header from "./components/Header";
+import ContentSection from "./components/ContentSection";
+import Footer from "./components/Footer";
 import "./App.css";
+
+////set the url
+const baseNASAurl = "https://api.nasa.gov/planetary/apod?api_key=xf0GPFzVbb5SzSpoHha4wjo7igdUoiG0uejdqLFO"
+const todaysDate = "2020-04-15"
+
 
 function App() {
   const [nasaDailyData, setNasaDailyData] = useState(null);
-
+  const [picDate, setPicDate] = useState(todaysDate)
+  
   useEffect(() => {
     axios
       .get(
-        "https://api.nasa.gov/planetary/apod?api_key=xf0GPFzVbb5SzSpoHha4wjo7igdUoiG0uejdqLFO"
+        `${baseNASAurl}&date=${picDate}`
       )
       .then((res) => {
         setNasaDailyData(res.data);
@@ -27,9 +33,22 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      {nasaDailyData && <ContentSection title={nasaDailyData.title} url={nasaDailyData.url} explanation={nasaDailyData.explanation}/>}
-      {nasaDailyData && <Footer copyright={nasaDailyData.copyright} date={nasaDailyData.date}/>}
+      <header>
+        <h1>NASA PHOTO OF THE DAY</h1>
+        <button className="randomize">
+          Random Date
+        </button>
+      </header>
+      {nasaDailyData && (
+        <ContentSection
+          title={nasaDailyData.title}
+          url={nasaDailyData.url}
+          explanation={nasaDailyData.explanation}
+        />
+      )}
+      {nasaDailyData && (
+        <Footer copyright={nasaDailyData.copyright} date={nasaDailyData.date} />
+      )}
     </div>
   );
 }
