@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Header from "./components/Header"
 import ContentSection from "./components/ContentSection";
 import Footer from "./components/Footer";
-import styled from "styled-components";
+// import styled from "styled-components";
 import "./App.css";
 
 ////set the url
@@ -10,28 +11,12 @@ const baseNASAurl =
   "https://api.nasa.gov/planetary/apod?api_key=xf0GPFzVbb5SzSpoHha4wjo7igdUoiG0uejdqLFO";
 const todaysDate = "2020-04-15";
 
-const StyleHeader = styled.header`
-  width: 100%;
-  background-color: navy;
-  border-bottom: 1px solid white;
-  margin-bottom: 3%;
-  padding-bottom: 1rem;
-`;
-const RandomizeButton = styled.button`
-  font-size: 2rem;
-  border-radius: 1rem;
-  border: none;
-  padding: 1rem;
-  box-shadow: 0 0 0.25rem 0.25rem silver;
-  color: navy;
-  background-color: lightblue;
-`;
-
 function App() {
   const [nasaDailyData, setNasaDailyData] = useState(null);
   const [picDate, setPicDate] = useState(todaysDate);
 
-  const clickHandler = () => {
+  const getRandomPic = (event) => {
+    event.preventDefault();
     function randomDate(minYear, maxYear, minMonth, maxMonth, minDay, maxDay) {
       const calendarYear = Math.floor(
         Math.random() * (maxYear - minYear) + minYear
@@ -69,10 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <StyleHeader>
-        <h1>NASA PHOTO OF THE DAY</h1>
-        <RandomizeButton onClick={clickHandler}>Random Pic</RandomizeButton>
-      </StyleHeader>
+      {nasaDailyData && <Header clickHandler={getRandomPic} />}
       {nasaDailyData && (
         <ContentSection
           title={nasaDailyData.title}
