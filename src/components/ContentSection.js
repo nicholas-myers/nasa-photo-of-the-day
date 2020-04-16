@@ -12,7 +12,7 @@ const StyleContentSection = styled.section`
 `
 
 const StyleNASAimg = styled.img`
-  height: 100%;
+  height: 700px;
   width: 100%;
   
 `;
@@ -28,7 +28,7 @@ const StyleNASAcard = styled.div`
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  opacity: 50%;
+  opacity: 80%;
 `;
 
 
