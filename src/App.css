@@ -10,10 +10,7 @@
   color: white;
 }
 
-header {
-  width: 100%;
-  margin-bottom: 3%;
-}
+
 
 .randomize {
   font-size: 2rem;
@@ -33,7 +30,7 @@ section {
 }
 
 footer {
-  width:100%;
+  
 }
 .NASAcard {
   border: 1px solid white;
