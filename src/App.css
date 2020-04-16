@@ -11,16 +11,6 @@
 }
 
 
-
-.randomize {
-  font-size: 2rem;
-  border-radius: 1rem;
-  padding: 1rem;
-  box-shadow: 0 .5rem 1rem black;
-  color: white;
-  background-color: navy;
-}
-
 section {
   width:100%;
   display: flex;
@@ -29,9 +19,7 @@ section {
   flex-flow: column;
 }
 
-footer {
-  
-}
+
 .NASAcard {
   border: 1px solid white;
   background-color: navy;

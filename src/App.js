@@ -6,31 +6,31 @@ import styled from "styled-components";
 import "./App.css";
 
 ////set the url
-const baseNASAurl = "https://api.nasa.gov/planetary/apod?api_key=xf0GPFzVbb5SzSpoHha4wjo7igdUoiG0uejdqLFO"
-const todaysDate = "2020-04-15"
-
+const baseNASAurl =
+  "https://api.nasa.gov/planetary/apod?api_key=xf0GPFzVbb5SzSpoHha4wjo7igdUoiG0uejdqLFO";
+const todaysDate = "2020-04-15";
 
 const StyleHeader = styled.header`
   width: 100%;
   background-color: navy;
   border-bottom: 1px solid white;
   margin-bottom: 3%;
-  padding: 3%;
-`
+  padding-bottom: 1rem;
+`;
 const RandomizeButton = styled.button`
-font-size: 2rem;
+  font-size: 2rem;
   border-radius: 1rem;
-  border:  none;
+  border: none;
   padding: 1rem;
-  box-shadow: 0 0 .25rem .25rem silver;
+  box-shadow: 0 0 0.25rem 0.25rem silver;
   color: navy;
   background-color: lightblue;
-`
+`;
 
 function App() {
   const [nasaDailyData, setNasaDailyData] = useState(null);
-  const [picDate, setPicDate] = useState(todaysDate)
-  
+  const [picDate, setPicDate] = useState(todaysDate);
+
   const clickHandler = () => {
     function randomDate(minYear, maxYear, minMonth, maxMonth, minDay, maxDay) {
       const calendarYear = Math.floor(
@@ -39,30 +39,29 @@ function App() {
       const calendarMonth = Math.floor(
         Math.random() * (maxMonth - minMonth) + minMonth
       );
-      const calendarDay = Math.floor(Math.random() * (maxDay - minDay) + minDay);
+      const calendarDay = Math.floor(
+        Math.random() * (maxDay - minDay) + minDay
+      );
       const calendarDate = `${calendarYear}-${calendarMonth}-${calendarDay}`;
-    
+
       return calendarDate;
     }
-    setPicDate(randomDate(1995, 2020, 6, 4, 16, 14))
-  }
+    setPicDate(randomDate(1995, 2020, 6, 4, 16, 14));
+  };
 
   useEffect(() => {
     axios
-      .get(
-        `${baseNASAurl}&date=${picDate}`
-      )
+      .get(`${baseNASAurl}&date=${picDate}`)
       .then((res) => {
         setNasaDailyData(res.data);
-        console.log("you clicked")
+        console.log("you clicked");
       })
       .catch((err) => {
         console.log(err);
       });
   }, [picDate]);
 
-
-  console.log({picDate})
+  console.log({ picDate });
 
   // console.log(nasaDailyData)
   // https://apod.nasa.gov/apod/image/2004/MVP_Aspinall_960.jpg
@@ -72,9 +71,7 @@ function App() {
     <div className="App">
       <StyleHeader>
         <h1>NASA PHOTO OF THE DAY</h1>
-        <RandomizeButton onClick={clickHandler}>
-          Random Pic
-        </RandomizeButton>
+        <RandomizeButton onClick={clickHandler}>Random Pic</RandomizeButton>
       </StyleHeader>
       {nasaDailyData && (
         <ContentSection

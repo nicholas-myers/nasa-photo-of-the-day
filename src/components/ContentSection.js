@@ -1,16 +1,22 @@
 import React from "react";
-import "../../src/App.css";
+import styled from "styled-components";
+// import "../../src/App.css";
+
+const StyleNASAimg = styled.img`
+  width: 700px;
+  height: 500px;
+`;
 
 function ContentSection(props) {
-   const { title, url, explanation } = props
+  const { title, url, explanation } = props;
   return (
     <section className="content">
-        <div className="NASAcard">
-          <h2>{title}</h2>
-          <img src={url} />
-          <p>{explanation}</p>
-        </div>
-      </section>
+      <div className="NASAcard">
+        <h2>{title}</h2>
+        <StyleNASAimg src={url} />
+        <p>{explanation}</p>
+      </div>
+    </section>
   );
 }
 
