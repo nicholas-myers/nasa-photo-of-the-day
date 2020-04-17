@@ -9,6 +9,7 @@ const StyleContentSection = styled.section`
   justify-content: center;
   align-items: center;
   flex-flow: column;
+
 `
 
 const StyleNASAimg = styled.img`
